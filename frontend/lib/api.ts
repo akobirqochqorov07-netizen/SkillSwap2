@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:3001';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
 export const api = {
     async request(endpoint: string, options: RequestInit = {}) {
@@ -43,6 +43,7 @@ export const api = {
     },
 
     users: {
+        getAll: () => api.request('/users'),
         getProfile: () => api.request('/users/profile'),
         updateProfile: (data: any) => api.request('/users/profile', { method: 'PATCH', body: JSON.stringify(data) }),
     }

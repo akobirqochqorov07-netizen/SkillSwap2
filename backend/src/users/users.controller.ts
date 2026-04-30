@@ -12,6 +12,11 @@ export class UsersController {
         return this.usersService.findOne(req.user.userId);
     }
 
+    @Get()
+    async findAll() {
+        return this.usersService.findAll();
+    }
+
     @Patch('profile')
     async updateProfile(@Request() req, @Body() data: any) {
         return this.usersService.update(req.user.userId, data);

@@ -30,7 +30,8 @@ export default function Sidebar() {
     const navItems = [
         { name: t('dashboard'), href: '/dashboard', icon: LayoutDashboard },
         { name: t('matches'), href: '/matches', icon: Users },
-        { name: t('messages'), href: '/messages', icon: MessageSquare }, // Updated from /chat/general to /messages
+        { name: t('messages'), href: '/messages', icon: MessageSquare },
+        { name: 'Users Catalog', href: '/admin', icon: Award },
         { name: t('my_profile'), href: '/profile', icon: Award },
     ];
 

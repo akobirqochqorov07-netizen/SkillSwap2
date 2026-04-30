@@ -14,6 +14,14 @@ export class UsersService {
         });
     }
 
+    async findAll() {
+        return this.prisma.user.findMany({
+            include: {
+                skills: true,
+            },
+        });
+    }
+
     async update(id: string, data: any) {
         return this.prisma.user.update({
             where: { id },

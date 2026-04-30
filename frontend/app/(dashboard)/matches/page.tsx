@@ -9,11 +9,13 @@ import { useLanguage } from '@/lib/providers/LanguageProvider';
 
 export default function MatchesPage() {
     const [matches, setMatches] = useState<any[]>([]);
+    const [user, setUser] = useState<any>(null);
     const [loading, setLoading] = useState(true);
     const router = useRouter();
     const { t } = useLanguage();
 
     useEffect(() => {
+        setUser(JSON.parse(localStorage.getItem('user') || '{}'));
         const fetchMatches = async () => {
             try {
                 const data = await api.matches.getMyMatches();
@@ -42,8 +44,8 @@ export default function MatchesPage() {
     };
 
     const getPartner = (match: any) => {
-        const userId = JSON.parse(localStorage.getItem('user') || '{}').id;
-        return match.userAId === userId ? match.userB : match.userA;
+        if (!user || Object.keys(user).length === 0) return match.userA;
+        return match.userAId === user.id ? match.userB : match.userA;
     };
 
     return (
@@ -80,7 +82,7 @@ export default function MatchesPage() {
                         >
                             {matches.map((match) => {
                                 const partner = getPartner(match);
-                                const isPendingMe = match.status === 'PENDING' && match.userBId === JSON.parse(localStorage.getItem('user') || '{}').id;
+                                const isPendingMe = match.status === 'PENDING' && user && match.userBId === user.id;
 
                                 return (
                                     <motion.div
