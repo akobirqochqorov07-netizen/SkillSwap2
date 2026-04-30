@@ -109,7 +109,7 @@ export function LanguageProvider({
     if (!mounted) {
         return (
             <LanguageContext.Provider value={{ locale: defaultLocale, setLocale: () => { }, t }}>
-                <div style={{ visibility: 'hidden' }}>{children}</div>
+                {children}
             </LanguageContext.Provider>
         );
     }

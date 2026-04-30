@@ -25,6 +25,13 @@ let UsersService = class UsersService {
             },
         });
     }
+    async findAll() {
+        return this.prisma.user.findMany({
+            include: {
+                skills: true,
+            },
+        });
+    }
     async update(id, data) {
         return this.prisma.user.update({
             where: { id },

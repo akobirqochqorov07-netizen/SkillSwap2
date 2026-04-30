@@ -73,7 +73,7 @@ export function ThemeProvider({
     if (!mounted) {
         return (
             <ThemeProviderContext.Provider value={{ theme: 'system', resolvedTheme: 'dark', setTheme: () => { } }}>
-                <div style={{ visibility: 'hidden' }}>{children}</div>
+                {children}
             </ThemeProviderContext.Provider>
         );
     }

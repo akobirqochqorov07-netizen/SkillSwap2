@@ -24,6 +24,28 @@ export declare class UsersController {
         createdAt: Date;
         updatedAt: Date;
     }) | null>;
+    findAll(): Promise<({
+        skills: {
+            name: string;
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            type: import(".prisma/client").$Enums.SkillType;
+            level: number;
+            verified: boolean;
+            userId: string;
+        }[];
+    } & {
+        email: string;
+        password: string;
+        name: string;
+        university: string | null;
+        id: string;
+        bio: string | null;
+        skillScore: number;
+        createdAt: Date;
+        updatedAt: Date;
+    })[]>;
     updateProfile(req: any, data: any): Promise<{
         email: string;
         password: string;

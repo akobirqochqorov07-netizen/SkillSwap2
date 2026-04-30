@@ -24,6 +24,9 @@ let UsersController = class UsersController {
     async getProfile(req) {
         return this.usersService.findOne(req.user.userId);
     }
+    async findAll() {
+        return this.usersService.findAll();
+    }
     async updateProfile(req, data) {
         return this.usersService.update(req.user.userId, data);
     }
@@ -36,6 +39,12 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "getProfile", null);
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Patch)('profile'),
     __param(0, (0, common_1.Request)()),
